@@ -28,14 +28,14 @@ public class LoginTest extends BaseTest
 //		}
 	
 	@Test
-	public void validLogin() throws InterruptedException
+	public void validLogin() 
 	{
 		loginPage.login("Admin", "admin123"); 						//Calling loginpage using LoginPage object to login
 		Assert.assertTrue(driver.getCurrentUrl().contains("dashboard"), "Dashboard page is not loaded");
 	}
 	
 	@Test
-	public void invalidLogin() throws InterruptedException
+	public void invalidLogin() 
 	{
 		loginPage.login("Admin", "wrongpassword"); 					//Calling loginpage using LoginPage object to login with Invalid creds
 		Assert.assertTrue(driver.getCurrentUrl().contains("auth"), "User should not be logged in"); 
