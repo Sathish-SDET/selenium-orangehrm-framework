@@ -26,9 +26,9 @@ jobs:
       - name: Run Maven Tests
         run: mvn clean test
 		
-		- name: Upload TestNG Reports
-		       if: always()
-		       uses: actions/upload-artifact@v4
-		       with:
-		         name: testng-report
-		         path: test-output
+ 	  - name: Upload TestNG Reports
+	    if: always()
+	    uses: actions/upload-artifact@v4
+	    with:
+          name: testng-report
+          path: test-output
