@@ -1,5 +1,9 @@
 package tests;
 
+import java.time.Duration;
+
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -30,8 +34,16 @@ public class LoginTest extends BaseTest
 	@Test
 	public void validLogin() 
 	{
-		loginPage.login("Admin", "admin123"); 						//Calling loginpage using LoginPage object to login
-		Assert.assertTrue(driver.getCurrentUrl().contains("dashboard"), "Dashboard page is not loaded");
+		loginPage.login("Admin", "admin123"); 						//Calling loginpage using LoginPage object to login 
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+		wait.until(ExpectedConditions.urlContains("dashboard"));
+
+		Assert.assertTrue(
+		    driver.getCurrentUrl().contains("dashboard"),
+		    "Dashboard page is not loaded"
+		);
+		//Assert.assertTrue(driver.getCurrentUrl().contains("dashboard"), "Dashboard page is not loaded");
 	}
 	
 	@Test
